@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Scrapy settings for newsSpider project
-#
+# -*- coding: utf-8 -*- # Scrapy settings for newsSpider project #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
 #
@@ -88,3 +85,16 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+LOG_LEVEL = 'WARNING'
+
+# mongodb
+ONGODB_SERVER = 'localhost'
+MONGODB_PORT = 10001
+MONGODB_DB = 'news'
+MONGODB_COLLECTION = 'news_contents'
+
+# pipelines
+ITEM_PIPELINES = {
+    'newsSpider.pipelines.NewsContentPipeline': 100,
+}
