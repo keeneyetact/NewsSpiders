@@ -17,6 +17,7 @@ class NewsItem(scrapy.Item):
 class NewsContentItem(scrapy.Item):
     title   = scrapy.Field()
     content = scrapy.Field()
+    key     = scrapy.Field()
     url     = scrapy.Field()
     time    = scrapy.Field()
     site    = scrapy.Field()

@@ -3,6 +3,7 @@
 import scrapy
 import time
 import os
+import string
 
 from scrapy.http import Request
 from newsSpider.items import NewsItem, NewsContentItem
@@ -57,7 +58,10 @@ class BeiqingwangSpider(scrapy.Spider):
         article = response.selector.xpath('//div[@id="articleContent"]')
         item = NewsContentItem()
         item['title'] = article.xpath('//div[@class="articleTitle"]/h2/text()').extract()[0]
-        item['content'] = article.xpath('//div[@class="articleBox mb20 cfix"]/p/text()').extract()[0]
+        contents = article.xpath('//div[@class="articleBox mb20 cfix"]/p/text()').extract()
+        item['content'] = ''
+        for cont in contents:
+            item['content'] += cont.strip()
         item['url']   = response.url
         item['time']  = article.xpath('//span[@class="yearMsg"]/text()').extract()[0]
         item['site']  = '北青网'
