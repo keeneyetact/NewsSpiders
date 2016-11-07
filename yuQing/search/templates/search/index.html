@@ -1,1 +1,21 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+
+{% load transformfilter %}
+</head>
+<body>
+<form action="/" method="get">
+    <input type="text" name="keys" value="{{ keys }}"> <br>
+    <input type="submit" value="提交">
+</form>
+{% for news in news_list %}
+    <a name="news_title" href="/detail?sign={{ news.sign }}">
+        {{ news.title }}
+    </a>
+    <br />
+    {{ news.time }}
+    <br/>
+{% endfor %}
+</body>
+</html>

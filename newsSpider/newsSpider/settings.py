@@ -89,7 +89,7 @@ ROBOTSTXT_OBEY = True
 LOG_LEVEL = 'WARNING'
 
 # mongodb
-ONGODB_SERVER = 'localhost'
+MONGODB_SERVER = 'localhost'
 MONGODB_PORT = 10001
 MONGODB_DB = 'news'
 MONGODB_COLLECTION = 'news_contents'

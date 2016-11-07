@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    {% if news %}
+        {{ news.title }}
+        <br />
+        {{ news.time }}
+        <br />
+        {{ news.content }}
+    {% else %}
+        此篇内容已丢失
+    {% endif %}
+</body>
+</html>

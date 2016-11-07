@@ -35,19 +35,6 @@ class BeiqingwangSpider(scrapy.Spider):
         next_page = '%s%s' % (self.url_root, url_suffix)
         yield Request(url = next_page, callback = self.parse)
 
-
-        #loader = ItemLoader(NewsListItem(), response)
-        #loader.add_xpath('title', '//li//a/text()')
-        #loader.add_xpath('url', '//li//a/@href')
-        #loader.add_xpath('time', '//li//tt/text()')
-        #loader.add_value('site', response.url)
-        #item['title'] = sel.xpath('//a/text()').extract()
-        #item['url']   = sel.xpath('//a/@href').extract()
-        #item['time']  = sel.xpath('//tt/text()').extract()
-        #item['site']  = response.url
-        #yield item
-        #return loader.load_item()
-
     def isTimeOk(self, time_str, time_str_format = '%Y/%m/%d %H:%M'):
         time_obj = time.strptime(time_str, time_str_format)
         now_obj  = time.localtime()
@@ -61,7 +48,7 @@ class BeiqingwangSpider(scrapy.Spider):
         contents = article.xpath('//div[@class="articleBox mb20 cfix"]/p/text()').extract()
         item['content'] = ''
         for cont in contents:
-            item['content'] += cont.strip()
+            item['content'] += cont.strip() + '<br />'
         item['url']   = response.url
         item['time']  = article.xpath('//span[@class="yearMsg"]/text()').extract()[0]
         item['site']  = '北青网'

@@ -6,8 +6,10 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import jieba
+import hashlib
 
 from scrapy.utils.project import get_project_settings
+from scrapy.exceptions import DropItem
 from pymongo import MongoClient
 
 class NewsContentPipeline(object):
@@ -15,7 +17,7 @@ class NewsContentPipeline(object):
     def __init__(self):
         setting = get_project_settings()
         conn = MongoClient(
-            setting['MONGODB_SERVER,'],
+            setting['MONGODB_SERVER'],
             setting['MONGODB_PORT']
         )
         db = conn[setting['MONGODB_DB']]
@@ -24,5 +26,11 @@ class NewsContentPipeline(object):
     def process_item(self, item, spider):
         keys = jieba.cut_for_search(item['content'])
         item['key'] = ",".join(set(keys))
-        self.collection.insert(dict(item))
-        return item
+        item['sign'] = hashlib.md5(item['title']).hexdigest()
+        # 如果这个文章已存在，就丢弃这个item
+        res = self.collection.find_one({'sign': item['sign']})
+        if res:
+            raise DropItem('this item is exited')
+        else:
+            self.collection.insert(dict(item))
+            return item

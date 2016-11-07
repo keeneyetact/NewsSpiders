@@ -21,3 +21,4 @@ class NewsContentItem(scrapy.Item):
     url     = scrapy.Field()
     time    = scrapy.Field()
     site    = scrapy.Field()
+    sign    = scrapy.Field()

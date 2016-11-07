@@ -25,7 +25,7 @@ SECRET_KEY = '^(&(8(0%l69z@swm!yoiyigq-h+kdwdlrftqmi*4!4#7bh^lji'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'search',
 ]
 
 MIDDLEWARE = [
@@ -118,17 +120,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# apps
-INSTALL_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    'search',
-)
-
-ALLOWED_HOSTS = ['*']
