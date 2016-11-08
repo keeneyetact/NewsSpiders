@@ -19,10 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from search import views as search_views
-from sayhee import views as sayhee_views
 
 urlpatterns = [
-    url(r'^$', sayhee_views.index),
     url(r'^yuQing/', search_views.search),
     url(r'^yuQing-detail/', search_views.detail),
     url(r'^admin/', admin.site.urls),
