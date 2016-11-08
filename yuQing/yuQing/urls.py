@@ -18,7 +18,7 @@ from django.contrib import admin
 from search import views as search_views
 
 urlpatterns = [
-    url(r'^$', search_views.index),
-    url(r'^detail/', search_views.detail),
+    url(r'^yuQing/', search_views.index),
+    url(r'^yuQing-detail/', search_views.detail),
     url(r'^admin/', admin.site.urls),
 ]

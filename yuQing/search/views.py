@@ -54,4 +54,4 @@ def detail(request):
         news = news_db.findBySign(news_sign)
         return render(request, 'search/detail.html', {'news' : news})
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/yuQing')

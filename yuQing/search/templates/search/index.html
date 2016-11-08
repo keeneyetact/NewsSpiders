@@ -5,12 +5,12 @@
 {% load transformfilter %}
 </head>
 <body>
-<form action="/" method="get">
+<form action="/yuQing" method="get">
     <input type="text" name="keys" value="{{ keys }}"> <br>
-    <input type="submit" value="提交">
+    <input type="submit" value="搜索">
 </form>
 {% for news in news_list %}
-    <a name="news_title" href="/detail?sign={{ news.sign }}">
+    <a name="news_title" href="/yuQing-detail?sign={{ news.sign }}">
         {{ news.title }}
     </a>
     <br />
