@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 from search import views as search_views
+from sayhee import views as sayhee_views
 
 urlpatterns = [
-    url(r'^yuQing/', search_views.index),
+    url(r'^$', sayhee_views.index),
+    url(r'^yuQing/', search_views.search),
     url(r'^yuQing-detail/', search_views.detail),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

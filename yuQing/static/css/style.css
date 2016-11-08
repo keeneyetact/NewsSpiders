@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+/* layout > 整体布局
+--------------------------------------------------------------------*/
+html, body { height: 100%;}
+body { font: 12px/1.5 "Microsoft YaHei", \5b8b\4f53, tahoma, arial, 'Hiragino Sans GB'; position: relative;  overflow-x: hidden; background: url(../images/bg.gif);}
+a:link { text-decoration: none;}
+a:active, a:focus { background: none!important;}
+.colGray { color: #bbb;}
+mark { background: none; color: #ff3560;}
+.sectionMain { text-align: center; padding: 40px 0; position: relative; overflow: hidden; z-index: 999;}
+.sectionMain .container { width: 80%;}
+.sectionMain h1 { font-size: 50px;}
+.swiper-container { display: none;}
+
+
+/* loading > loading
+--------------------------------------------------------------------*/
+#loadingBox { width: 100%; height: 100%; background: rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; z-index: 999999999;}
+.loading { width: 40px; height: 40px; position: relative; margin: 200px auto 0;}
+.loading .double-bounce1, .loading .double-bounce2
+{ width: 100%; height: 100%; border-radius: 50%; background-color: #fff; opacity: .5; position: absolute; top:0; left: 0;  -webkit-animation: bounce 2s infinite ease-in-out; animation: bounce 2s infinite ease-in-out;}
+.loading .double-bounce2 { -webkit-animation-delay: -1s; animation-delay: -1s;}
+@-webkit-keyframes bounce {
+	0%,100%{ -webkit-transform:scale(0)}
+	50%{-webkit-transform:scale(1)}
+}
+@keyframes bounce {
+	0%,100%{transform:scale(0);-webkit-transform:scale(0)}
+	50%{transform:scale(1);-webkit-transform:scale(1)}
+}
+
+
+/* swiper > banner
+--------------------------------------------------------------------*/
+.swiper-container { width: 100%;}
+.swiper-container .swiper-pagination .swiper-pagination-bullet { width: 30px; height: 5px; border-radius: 0!important; margin: 0 2px;}
+.swiper-container .swiper-pagination .swiper-pagination-bullet-active { background: #ff3560;}
+
+
+/* header > 头部
+--------------------------------------------------------------------*/
+header { line-height: 155px; position: absolute; top: 0; left: 0; right: 0; z-index: 99;}
+.logo { color: #fff; font-size: 52px; margin: 48px 0 0;}
+.logo a, .logo a:hover, .logo a:active, .logo a:link, .logo a:visited { color: #fff;}
+.logo-tagline { vertical-align: middle; color: #ccc; font-size: 20px; display: inline-block; height: 30px; line-height: 30px; border-left: 1px solid #999; padding-left: 20px;}
+nav { float: right; margin-right: -15px;}
+nav ul { margin: 0; padding: 0;}
+nav li { display: inline-block; height: 22px; line-height: 22px; padding: 0 15px; border-right: 1px solid #999;}
+nav li:last-child { border-right: 0; position: relative;}
+nav a { color: #fff; position: relative; font-size: 16px; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all;}
+nav a:link, nav a:visited { color: #fff;}
+nav a:hover, nav a:active, nav li a.active { color: #ff3560;}
+#mobile-nav-button { display: none; width: 20px; height: 20px; line-height: 20px; padding: 0; text-align: center; margin-top: 10px;}
+#mobile-nav-button i { font-size: 20px; color: #fff;}
+
+
+/* section-one > 第一屏
+--------------------------------------------------------------------*/
+#section-one, .mask, #section-one .imageBox { color: #fff; text-align: center; width: 100%; height: 100%; position: relative; line-height: 55px; -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 90%); clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 90%); overflow: hidden;}
+.mask, #section-one .imageBox { background-color: rgba(0,0,0,.5); position: absolute; top: 0; left: 0;}
+#section-one .imageBox { z-index: -1; background: url("../images/09302614.jpg") center center no-repeat fixed; background-size: cover;}
+#section-one .content { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-direction: normal; -moz-box-direction: normal; -webkit-box-orient: vertical; -moz-box-orient: vertical; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;}
+#section-one .content h1 { font-size: 68px;}
+#section-one .content hr { width: 0; height: 6px; background: #ff3560; border-top: 0; margin: 20px auto 14px; animation: toLong 1s 1; -webkit-animation: toLong 1s 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards;}
+@-webkit-keyframes toLong {
+	100% { width: 260px;}
+}
+@-webkit-keyframes toShort {
+	100% { width: 176px;}
+}
+#section-one .content p { font-size: 30px; color: #C0C4CB; margin: 0; padding: 0; line-height: 44px;}
+
+
+/* btn-scroll-down > 下拉箭头
+--------------------------------------------------------------------*/
+.btn-scroll-down { display: block; position: absolute; width: 60px; height: 35px; bottom: 80px; left: 50%; opacity: 0.6; margin-left: -30px; -webkit-animation: floating-arrow 1.6s infinite 0s; -o-animation: floating-arrow 1.6s infinite 0s; animation: floating-arrow 1.6s infinite 0s; z-index: 99;}
+@-webkit-keyframes floating-arrow {
+	from {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	65% {
+		-webkit-transform: translateY(11px);
+		transform: translateY(11px);
+	}
+	to {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+
+/* section-two > 第二屏
+--------------------------------------------------------------------*/
+#section-two p { font-size: 18px; line-height: 2em; margin: 40px auto 0; text-align: left; color: #999; text-justify: auto; text-align: justify;}
+#section-two p:first-letter { font-size:56px; font-weight: bold; float: left; line-height: 1.2em; margin-right: 6px; color: #666;}
+#section-two .imgBg { position: absolute; bottom: 10px; right: -60px; width: 250px; height: 250px; opacity: .1;} 
+
+
+/* section-three > 第三屏
+--------------------------------------------------------------------*/
+#section-three { background: #fff; margin-top: 40px; padding-bottom: 0; border-top: 1px #e5e5e5 solid; border-bottom: 1px #e5e5e5 solid;}
+#section-three .mask { background: url(../images/home.jpg) no-repeat fixed; background-size: cover; opacity: 0.2; -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%); clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);}
+#section-three .row .panel { text-align: center; padding: 50px; position: relative; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all; overflow: hidden; border: none; box-shadow: none; background: none; cursor: pointer;}
+#section-three .row .panel h2 { margin-bottom: 20px; position: relative; z-index: 1;}
+#section-three .row .panel p { font-size: 15px; line-height: 1em; color: #888; position: relative; z-index: 1;}
+#section-three .row .panel p img { width: 120px; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all;}
+#section-three .row .panel:hover p img { transform:scale(1.1,1.1); -ms-transform:scale(1.1,1.1); -moz-transform:scale(1.1,1.1); -webkit-transform:scale(1.1,1.1); -o-transform:scale(1.1,1.1);}
+
+
+/* section-four > 第四屏
+--------------------------------------------------------------------*/
+#section-four p { font-size: 18px; line-height: 1.5em; margin: 40px auto 0; color: #666; text-justify: auto; text-align: justify; text-align: center;}
+#section-four p.teamInfo { margin-top: 0;}
+#section-four p img { width: 60px;}
+#section-four .row { margin-top: 40px;}
+#section-four .row .panel { overflow: hidden; padding-bottom: 20px; cursor: pointer;}
+#section-four .row .panel img.header { width: 100%;}
+#section-four .row .panel .block { padding: 0 1em;}
+#section-four .row .panel .block img.avatar { margin-top: -40px; border-radius: 100%; width: 80px; border: 3px solid rgba(0,0,0,.2); -webkit-transition: 0.5s all; -moz-transition: 0.5s all; -o-transition: 0.5s all; transition: 0.5s all;}
+#section-four .row .panel:hover .block img.avatar { transform:rotateY(180deg); -ms-transform:rotateY(180deg); -moz-transform:rotateY(180deg); -webkit-transform:rotateY(180deg); -o-transform:rotateY(180deg);  -webkit-transition: 0.5s all; -moz-transition: 0.5s all; -o-transition: 0.5s all; transition: 0.5s all;}
+#section-four .row .panel h3 { margin: 20px 0; line-height: 1em; font-size: 20px;}
+#section-four .row .panel p { font-size: 13px; line-height: 1em; margin: 0 0 5px; color: #999;}
+#section-four .row .panel:hover h3 { color: #ff3560; -webkit-transition: 0.5s all; -moz-transition: 0.5s all; -o-transition: 0.5s all; transition: 0.5s all;}
+
+
+/* section-five > 第五屏
+--------------------------------------------------------------------*/
+#section-five { background: #fff; margin-top: 20px; border-top: 1px #e5e5e5 solid; border-bottom: 1px #e5e5e5 solid; padding-bottom: 60px;}
+#section-five .mask { background: url(../images/bg_woshou.jpg) no-repeat center center fixed; background-size: cover; opacity: 0.15; -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%); clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%); z-index: -1;}
+#section-five p { font-size: 18px; line-height: 1.5em; margin:5px auto; color: #333; text-justify: auto; text-align: justify; text-align: center;}
+#section-five p .tel { display: inline-block; padding-right: 20px; border-radius: 50px; border:1px #aaa solid; margin: 15px 10px; font-family:arial; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all; cursor: pointer;}
+#section-five p .tel b { display: inline-block; padding: 10px 30px; border-radius: 50px; background: #aaa; color: #fff; margin-right: 20px; font-weight: normal; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all;}
+#section-five p .tel:hover { color: #ff3560; border-color: #ff3560;}
+#section-five p .tel:hover b { background: #ff3560; color: #fff;}
+#section-five p.yinyong { margin: 40px auto; font-size: 26px; color: #999;}
+#section-five p.yinyong img { width: 60px;}
+
+
+/* section-six > 第六屏
+--------------------------------------------------------------------*/
+#section-six { background: #f5f5f5; border-top: 1px #eee solid; border-bottom: 1px #eee solid; padding-bottom: 80px; overflow: hidden;}
+#section-six .row { margin-top: 20px;}
+#section-six .row .serviceBox { margin-left: -1px; margin-bottom: -1px; height: 80px; line-height: 80px; padding: 0 30px; text-align: center; float: left; width: 20%; overflow: hidden; cursor: pointer;}
+#section-six .row .serviceBox img { width: 100%; -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%); filter: grayscale(100%); filter: gray; opacity: 0.3; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all;}
+#section-six .row .serviceBox:hover img { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; filter: none; opacity: 1;}
+
+
+
+/* footer > 底部
+--------------------------------------------------------------------*/
+footer { padding: 30px 0; background: #333; color: #666; font-family: arial; font-size: 14px; font-weight:0;}
+footer img { height: 20px; margin-top: 8px;}
+footer p { line-height: 1em;}
+footer a { font-weight: normal; color: #ccc; margin: 0 10px;}
+footer a:hover { color: #ff3560;}
+
+
+/************************************** 小屏PC **************************************/
+@media screen and (max-width: 1199px) {
+    header { text-align: center;}
+    nav { height: 40px; line-height: 40px; float: none;}
+}
+
+/************************************** 平板 **************************************/
+@media screen and (max-width: 991px) {
+    header { height: auto; line-height: normal; margin-top: 40px;}
+    .logo { margin-top: 0;}
+    #section-one .content h1 { font-size: 65px; line-height: 65px;}
+    #section-one .content hr { margin-top: 23px;}
+    #section-one .content p { font-size: 30px; line-height: 34px;}
+}
+
+/************************************** 巨屏手机 **************************************/
+@media screen and (max-width: 767px) {
+    header { text-align: left; height: 80px; margin-top: 0;}
+    .logoImg { height: 24px;}
+    .logo-tagline { display: none;}
+    nav.nav-open { -webkit-animation: navOpen 0.3s 1; -o-animation: navOpen 0.3s 1; animation: navOpen 0.3s 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards;}
+	@-webkit-keyframes navOpen {
+		100% {
+			right: 0;
+		}
+	}
+    nav { float: none; position: fixed; height: 100%; width: 240px; top: 8px; right: -240px; bottom: 0; z-index: 1050; background: #1d2937;}
+    nav li { display: inline; border-right: 0 !important; padding: 0;}
+    nav li a { display: block; height: 50px; line-height: 50px; padding-left: 20px; border-bottom: 1px solid #18222e;}
+    nav li a.active { border-left: 4px solid #ff3560;}
+    nav li a.active:after { display: none;}
+    #mobile-nav-button {  display: block; position: absolute; top: 15px; right: 15px;}
+    #section-one .content h1 { font-size: 48px; line-height: 48px;}
+    #section-one .content hr { margin-top: 23px; animation: toShort 1s 1; -webkit-animation: toShort 1s 1; -webkit-animation-fill-mode: forwards; animation-fill-mode: forwards;}
+    #section-one .content p { font-size: 20px; line-height: 30px;}    
+}
+
+/************************************** 普通手机 **************************************/
+@media screen and (max-width: 420px) {
+	.btn-scroll-down img { width: 40px;}
+	.sectionMain .container { width: 90%;}
+	#section-one .imageBox, #section-three .mask, #section-five .mask { background-attachment:local;}
+    #section-one .content h1 { font-size: 32px; line-height: 32px;}
+    .sectionMain { padding: 20px 0 0;}
+    .sectionMain h1 { font-size: 30px;}
+    #section-two p { font-size: 16px; line-height: 1.7em; margin: 20px auto;}
+	#section-two p:first-letter { font-size:44px; line-height: 1.2em; margin-right: 5px; color: #666;}
+	#section-two .imgBg { width: 200px; height: 200px;}
+	#section-three { padding-bottom: 30px;}
+	#section-three .row .panel { padding: 20px;}
+	#section-three .row .panel p img { width: 100px;}
+	#section-three-swiper, #section-four-swiper { display: block;}
+	#section-three-row, #team, #section-four-row { display: none;}
+	#section-four p.teamInfo { margin: 20px 0 0; color: #999; font-size: 16px; line-height: 1.3em;}
+	#section-four .row { padding-bottom: 30px;}
+	#section-four .row .panel p { font-size: 15px;}
+	#section-four-swiper { margin-top: 20px !important;}
+	footer .footerNav { display: none;}
+	footer, footer .text-right { text-align: center;}
+	#section-six { padding-bottom: 40px;}
+	#section-six .row .serviceBox { width: 50%; padding: 0 20px;}
+}

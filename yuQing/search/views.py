@@ -33,7 +33,7 @@ class NewsContentModel:
         res = self.collection.find_one({'sign' : news_sign})
         return res
 
-def index(request):
+def search(request):
     if request.GET.has_key('keys'):
         keys = request.GET['keys']
         keys_generator = jieba.cut_for_search(keys)
