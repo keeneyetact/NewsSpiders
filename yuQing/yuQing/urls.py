@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from search import views as search_views
 
 urlpatterns = [
-    url(r'^yuQing/', search_views.search),
-    url(r'^yuQing-detail/', search_views.detail),
+    url(r'^yuqing/', search_views.search),
+    url(r'^yuqing-detail/', search_views.detail),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
