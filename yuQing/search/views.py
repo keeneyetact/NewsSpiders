@@ -22,7 +22,7 @@ class NewsContentModel:
 
     def getRegFromKeys(self, a_keys_generator):
         "return string"
-        reg_str = '(' + ' | '.join(a_keys_generator) + ')'
+        reg_str = '(' + '|'.join(a_keys_generator) + ')'
         return reg_str
 
     def findByRegKey(self, reg_str):
@@ -42,7 +42,7 @@ def search(request):
         news_list = news_db.findByRegKey(reg_str)
         return render(request, 'search/index.html', {
                 'keys' : keys,
-                'news_list' : news_list
+                'news_list' : news_list,
             })
     else:
         return render(request, 'search/index.html')
