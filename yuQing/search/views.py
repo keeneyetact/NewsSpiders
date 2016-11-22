@@ -26,7 +26,7 @@ class NewsContentModel:
         return reg_str
 
     def findByRegKey(self, reg_str):
-        res = self.collection.find({'key': {'$regex': reg_str}})
+        res = self.collection.find({'key': {'$regex': reg_str}}).sort('time', -1)
         return res
 
     def findBySign(self, news_sign):
@@ -37,8 +37,12 @@ def search(request):
     if request.GET.has_key('keys'):
         keys = request.GET['keys']
         keys_generator = jieba.cut_for_search(keys)
+        keys_list = []
+        for key in keys_generator:
+            if len(key) >= 2:
+                keys_list.append(key)
         news_db = NewsContentModel()
-        reg_str = news_db.getRegFromKeys(keys_generator)
+        reg_str = news_db.getRegFromKeys(keys_list)
         news_list = news_db.findByRegKey(reg_str)
         return render(request, 'search/index.html', {
                 'keys' : keys,

@@ -27,7 +27,12 @@ class NewsContentPipeline(object):
         # 内容和标题分词
         keys_title = jieba.cut_for_search(item['title'])
         keys_content = jieba.cut_for_search(item['content'])
-        item['key'] = ",".join(set(keys_title)) + "," + ",".join(set(keys_content))
+        keys_set = set(keys_title) | set(keys_content)
+        keys_list = []
+        for key in keys_set:
+            if len(key) >= 2:
+                keys_list.append(key)
+        item['key'] = ",".join(keys_list)
         item['sign'] = hashlib.md5(item['title']).hexdigest()
         # 如果这个文章已存在，就丢弃这个item
         res = self.collection.find_one({'sign': item['sign']})

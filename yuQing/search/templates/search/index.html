@@ -1,14 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-
-{% load transformfilter %}
+<title>搜索主页</title>
+<!-- Custom Theme files -->
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 </head>
 <body>
-<form action="/yuqing" method="get">
-    <input type="text" name="keys" value="{{ keys }}"> <br>
-    <input type="submit" value="搜索">
-</form>
+<!--search start here-->
+<div class="search">
+    <i> </i>
+    <div class="s-bar">
+    <form action="/yuqing" method="get">
+        <input name="key" type="text" value="{{ keys }}"  placeholder="输入关键词...">
+        <input type="submit"  value="搜索"/>
+    </form>
+    </div>
+    <p>热门搜索: <a href="#">test</a>,<a href="#">test</a></p>
+</div>
+<!--search end here-->  
+<div class="copyright">
+     <p>Copyright © <a href="/" target="_blank">泰明科技</a> 2016</p>
+</div>  
 {% for news in news_list %}
     <a name="news_title" href="/yuqing-detail?sign={{ news.sign }}">
         {{ news.title }}
