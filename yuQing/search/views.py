@@ -34,7 +34,7 @@ class NewsContentModel:
         return res
 
 def search(request):
-    if request.GET.has_key('keys'):
+    if request.GET.has_key('keys') and len(request.GET['keys']) > 1:
         keys = request.GET['keys']
         keys_generator = jieba.cut_for_search(keys)
         keys_list = []
@@ -44,7 +44,7 @@ def search(request):
         news_db = NewsContentModel()
         reg_str = news_db.getRegFromKeys(keys_list)
         news_list = news_db.findByRegKey(reg_str)
-        return render(request, 'search/index.html', {
+        return render(request, 'search/result.html', {
                 'keys' : keys,
                 'news_list' : news_list,
             })
