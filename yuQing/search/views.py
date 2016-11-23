@@ -19,12 +19,13 @@ def search(request):
         reg_str = news_db.getRegFromKeys(keys_list)
         news_count = news_db.getCountByRegKey(reg_str)
         page_size = 10
-        pages = [x for x in range(1, (news_count + page_size - 1)//page_size)] if (news_count + page_size - 1)//page_size > 1 else [1]
+        pages = [x for x in range(1, (news_count + page_size - 1)//page_size + 1)] if (news_count + page_size - 1)//page_size > 1 else [1]
         page =  int(request.GET['page']) if request.GET.has_key('page') else 1
         news_list = news_db.findByRegKey(reg_str, page, page_size)
         return render(request, 'search/result.html', {
                 'keys' : keys,
                 'news_list' : news_list,
+                'news_count' : news_count,
                 'pages' : pages,
                 'now_page' : page,
                 'prev_page' : page - 1,

@@ -16,11 +16,15 @@
 <!--search end here-->
 <br />
 <dl class="list_dl">
-<dt><b>搜索结果</b></dt>
+<dt><b>搜索结果(共：{{ news_count }}条）</b></dt>
 <dd>
 <ul>
 {% for news in news_list %}
-<li><span>{{ news.time }}</span><a href="#" class="link1">{{ news.site }}</a> <a href="/yuqing-detail?sign={{ news.sign }}">{{ news.title }}</a></li>
+<!-- 在本站打开内容页 -->
+<!-- <li><span>{{ news.time }}</span><a href="#" class="link1">{{ news.site }}</a> <a href="/yuqing-detail?sign={{ news.sign }}">{{ news.title }}</a></li> -->
+
+<!-- 在源站打开内容页 -->
+<li><span>{{ news.time }}</span><a href="#" class="link1">{{ news.site }}</a> <a href="{{ news.url }}" target="_blank">{{ news.title }}</a></li>
 {% endfor %}
 </ul>
 </dd>
@@ -55,7 +59,10 @@ padding:0px;
 margin:0px;
 list-style-type: none;
 }
-a{ text-decoration: none;}
+a{
+text-decoration: none;
+color:white;
+}
 .list_dl{
 width:100%;
 height:auto;

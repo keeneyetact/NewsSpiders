@@ -16,7 +16,7 @@ class NewsContentModel:
 
     def getRegFromKeys(self, a_keys_generator):
         "return string"
-        reg_str = '(' + '|'.join(a_keys_generator) + ')'
+        reg_str = '(?=.*' + ')(?=.*?'.join(a_keys_generator) + ')'
         return reg_str
 
     def findByRegKey(self, reg_str, page, page_size):
