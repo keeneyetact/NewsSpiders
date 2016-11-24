@@ -5,8 +5,11 @@ cd ~/javin/python/yuqing/newsSpider/
 scrapy crawl beiqingwang 2>&1
 scrapy crawl btime 2>&1
 scrapy crawl cnr 2>&1
+scrapy crawl eastmoney 2>&1
 scrapy crawl focus 2>&1
+scrapy crawl jingjiaoribao 2>&1
 scrapy crawl net163 2>&1
 scrapy crawl peoplebj 2>&1
 scrapy crawl people 2>&1
+scrapy crawl xinhuanet 2>&1
 cd -
