@@ -122,5 +122,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    '/home/dev/javin/python/yuqing/static/',
+    os.path.join(BASE_DIR, 'search/static'),
 ]
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'search/templates'),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)

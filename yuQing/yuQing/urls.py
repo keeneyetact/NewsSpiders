@@ -24,4 +24,4 @@ urlpatterns = [
     url(r'^yuqing/', search_views.search),
     url(r'^yuqing-detail/', search_views.detail),
     url(r'^admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

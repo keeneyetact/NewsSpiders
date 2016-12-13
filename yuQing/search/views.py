@@ -22,7 +22,7 @@ def search(request):
         pages = [x for x in range(1, (news_count + page_size - 1)//page_size + 1)] if (news_count + page_size - 1)//page_size > 1 else [1]
         page =  int(request.GET['page']) if request.GET.has_key('page') else 1
         news_list = news_db.findByRegKey(reg_str, page, page_size)
-        return render(request, 'search/result.html', {
+        return render(request, 'result.html', {
                 'keys' : keys,
                 'news_list' : news_list,
                 'news_count' : news_count,
@@ -33,13 +33,13 @@ def search(request):
                 'max_page' : pages[-1],
             })
     else:
-        return render(request, 'search/index.html')
+        return render(request, 'index.html')
 
 def detail(request):
     if request.GET.has_key('sign'):
         news_sign = request.GET['sign']
         news_db = NewsContentModel()
         news = news_db.findBySign(news_sign)
-        return render(request, 'search/detail.html', {'news' : news})
+        return render(request, 'detail.html', {'news' : news})
     else:
         return HttpResponseRedirect('/yuQing')
