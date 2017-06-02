@@ -3,15 +3,16 @@
 <head>
 {% load transformfilter %}
 <title>搜索结果页</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 <!--search start here-->
-<div class="search">
+    <div class="s-bar">
     <form action="/yuqing" method="get">
         <input name="keys" type="text" value="{{ keys }}"  placeholder="输入关键词...">
         <input type="submit"  value="搜索"/>
     </form>
-</div>
+    </div>
 <!--search end here-->
 <br />
 <dl class="list_dl">
@@ -27,17 +28,17 @@
 <!-- 分页 -->
 <ul class="page">
 {% if now_page != 1 %}
-<li><a href="?keys={{ keys }}&p={{ prev_page }}">上一页</a></li> &nbsp;
+<li><a href="?keys={{ keys }}&page={{ prev_page }}">上一页</a></li> &nbsp;
 {% endif %}
 {% for p in pages %}
     {% if now_page == p %}
         <li class="active">{{ p }}</li>&nbsp;
     {% else %}
-        <li><a href="?keys={{ keys }}&p={{ p }}">{{ p }}</a></li>&nbsp;
+        <li><a href="?keys={{ keys }}&page={{ p }}">{{ p }}</a></li>&nbsp;
     {% endif %}
 {% endfor %}
 {% if now_page != max_page %}
-<li><a href="?keys={{ keys }}&p={{ next_page }}">下一页</a></li>&nbsp;
+<li><a href="?keys={{ keys }}&page={{ next_page }}">下一页</a></li>&nbsp;
 {% endif %}
 </ul>
 
@@ -123,6 +124,7 @@ margin-right:7px;
 .page li {
     float: left;
     list-style: none;
+    margin-left: 6px;
 }
 
 .copyright {
