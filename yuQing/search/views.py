@@ -1,38 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render
-from django.http import HttpResponse
+import jieba
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .forms import SearchForm
-
-import jieba
-import uuid
-from pymongo import MongoClient
+from models import NewsContentModel
 
 # Create your views here.
-class NewsContentModel:
-    def __init__(self):
-        conn = MongoClient(
-            'localhost',
-            10001
-        )
-        db = conn['news']
-        self.collection = db['news_contents']
-
-    def getRegFromKeys(self, a_keys_generator):
-        "return string"
-        reg_str = '(' + '|'.join(a_keys_generator) + ')'
-        return reg_str
-
-    def findByRegKey(self, reg_str):
-        res = self.collection.find({'key': {'$regex': reg_str}}).sort('time', -1)
-        return res
-
-    def findBySign(self, news_sign):
-        res = self.collection.find_one({'sign' : news_sign})
-        return res
-
 def search(request):
     if request.GET.has_key('keys') and len(request.GET['keys'].strip()) > 1:
         keys = request.GET['keys']
@@ -41,12 +14,22 @@ def search(request):
         for key in keys_generator:
             if len(key) >= 2:
                 keys_list.append(key)
+        # 分页获取
         news_db = NewsContentModel()
         reg_str = news_db.getRegFromKeys(keys_list)
-        news_list = news_db.findByRegKey(reg_str)
+        news_count = news_db.getCountByRegKey(reg_str)
+        page_size = 10
+        pages = [x for x in range(1, (news_count + page_size - 1)//page_size)] if (news_count + page_size - 1)//page_size > 1 else [1]
+        page =  request.GET['page'] if request.GET.has_key('page') else 1
+        news_list = news_db.findByRegKey(reg_str, page, page_size)
         return render(request, 'search/result.html', {
                 'keys' : keys,
                 'news_list' : news_list,
+                'pages' : pages,
+                'now_page' : page,
+                'prev_page' : page - 1,
+                'next_page' : page + 1,
+                'max_page' : pages[-1],
             })
     else:
         return render(request, 'search/index.html')

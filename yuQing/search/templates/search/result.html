@@ -12,17 +12,123 @@
         <input type="submit"  value="搜索"/>
     </form>
 </div>
-<!--search end here-->  
+<!--search end here-->
+<br />
+<dl class="list_dl">
+<dt><b>搜索结果</b></dt>
+<dd>
+<ul>
 {% for news in news_list %}
-    <a name="news_title" href="/yuqing-detail?sign={{ news.sign }}">
-        {{ news.title }}
-    </a>
-    <br />
-    {{ news.time }}
-    <br/>
+<li><span>{{ news.time }}</span><a href="#" class="link1">{{ news.site }}</a> <a href="/yuqing-detail?sign={{ news.sign }}">{{ news.title }}</a></li>
 {% endfor %}
+</ul>
+</dd>
+</dl>
+<!-- 分页 -->
+<ul class="page">
+{% if now_page != 1 %}
+<li><a href="?p={{ prev_page }}">上一页</a></li>
+{% endif %}
+{% for p in pages %}
+    {% if now_page == p %}
+        <li class="active">{{ p }}</li>
+    {% else %}
+        <li><a href="?p={{ p }}">{{ p }}</a></li>
+    {% endif %}
+{% endfor %}
+{% if now_page != max_page %}
+<li><a href="?p={{ next_page }}">下一页</a></li>
+{% endif %}
+</ul>
+
 <div class="copyright">
      <p>Copyright © <a href="/" target="_blank">泰明科技</a> 2016</p>
-</div>  
+</div>
 </body>
 </html>
+
+
+<style>
+ul,li,ol,dl,dt,dd{
+padding:0px;
+margin:0px;
+list-style-type: none;
+}
+a{ text-decoration: none;}
+.list_dl{
+width:100%;
+height:auto;
+display:block;
+overflow:hidden;
+margin-bottom:8px;
+font-size:10pt;
+}
+.list_dl dt{
+width:100%;
+height:24px;
+margin-bottom:1px;
+background-color:#003366;
+border-bottom-width: 2px;
+border-bottom-style: solid;
+border-bottom-color: #FF9933;
+background-image: url(images/right_tit.gif);
+background-repeat:repeat-x;
+background-position: right top;
+}
+.list_dl dt b{
+float:left;
+width:240px;
+height:24px;
+line-height:24px;
+display:block;
+color:#FFFFFF;
+margin-left:12px;}
+.list_dl dt a{
+width:5em;
+height:23px;
+display:block;
+line-height:23px;
+margin-top:1px;
+color:#FFFFFF;
+float:right;
+text-align:right;
+padding-right:10px;}
+.list_dl dt a.more{
+color:#C1CEDB;}
+.list_dl dt a.more:hover{
+color:#fff;
+}
+.list_dl dd {
+display:block;
+margin-top:4px;
+clear:both;}
+.list_dl ul li{
+text-align:left;
+text-indent: 1.3em;
+line-height:220%;
+border-bottom-width: 1px;
+border-bottom-style: dashed;
+border-bottom-color: #CCCCCC;
+background-image: url(images/list_ico.gif);
+background-repeat:no-repeat;
+background-position: 4px center;
+}
+a.link1{color:#797979;}
+.list_dl ul li span{
+float:right;
+color:#9B9B9B;
+margin-right:7px;
+}
+
+.page li {
+    float: left;
+    list-style: none;
+}
+
+.copyright {
+position: absolute;  bottom: 0;
+left:0;
+height: 60px;
+margin-left: 600px;
+}
+</style>
