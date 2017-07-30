@@ -1,4 +1,4 @@
-# scrapy_news
+# NewsSpiders
 get news contents and can be searched on web
 
 > 针对新闻网站的一个爬虫，并将结果提供web页面的搜索
